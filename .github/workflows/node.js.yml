@@ -16,23 +16,28 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [10.x, 12.x]
 
     steps:
-    - name: setup ssh key
-      env:
-        private_key: ${{ secrets.PRIVATE_KEY }}
-        key_path: ${{ github.workspace }}/../private.key
-      run: |
-        mkdir -p ~/.ssh
-        echo "$private_key" > ../private.key
-        chmod 600 ../private.key
-        eval `ssh-agent`
-        ssh-add ../private.key
-        ssh-add -l
+#     - name: setup ssh key
+#       env:
+#         private_key: ${{ secrets.PRIVATE_KEY }}
+#         key_path: ${{ github.workspace }}/../private.key
+#       run: |
+#         mkdir -p ~/.ssh
+#         echo "$private_key" > ../private.key
+#         chmod 600 ../private.key
+#         eval `ssh-agent`
+#         ssh-add ../private.key
+#         ssh-add -l
+    - name: Install ssh key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.PRIVATE_KEY }}
+        name: id_rsa
     - uses: actions/checkout@v2
       with:
-        ssh-key: "$key_path"
+        ssh-key: "~/.ssh/id_rsa"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
