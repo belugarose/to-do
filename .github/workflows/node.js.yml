@@ -21,7 +21,7 @@ jobs:
     steps:
     - name: setup ssh key
       env:
-        private_key: ${{ secrets.PRIVATE_KEY }
+        private_key: ${{ secrets.PRIVATE_KEY }}
       run: |
         mkdir -p /ssh
         echo "$private_key" > /ssh/id_rsa
