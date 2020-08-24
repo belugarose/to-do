@@ -43,7 +43,7 @@ jobs:
         ssh-add -l
     - uses: actions/checkout@v2
       with:
-        ssh-key: "~/.ssh/id_rsa"
+        ssh-key: "${{ secrets.DEPLOY_KEY }}"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
