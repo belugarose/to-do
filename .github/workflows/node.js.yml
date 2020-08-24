@@ -26,7 +26,7 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo "$private_key" > ../private.key
-        chmod 600 ../peivate.key
+        chmod 600 ../private.key
         eval `ssh-agent`
         ssh-add ../private.key
         ssh-add -l
