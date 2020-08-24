@@ -31,7 +31,7 @@ jobs:
         ssh-add -l
     - uses: actions/checkout@v2
       with:
-        ssh-key: ${{ secrets.PRIVATE_KEY }}
+        ssh-key: ""
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
