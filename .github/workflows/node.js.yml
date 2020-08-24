@@ -35,6 +35,7 @@ jobs:
       with:
         key: ${{ secrets.PRIVATE_KEY }}
         name: id_rsa
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
     - uses: actions/checkout@v2
       with:
         ssh-key: "~/.ssh/id_rsa"
