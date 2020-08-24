@@ -36,6 +36,10 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         name: id_rsa
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    - name: check ssh key
+      run: |
+        eval `ssh-agent`
+        ssh-add -l
     - uses: actions/checkout@v2
       with:
         ssh-key: "~/.ssh/id_rsa"
