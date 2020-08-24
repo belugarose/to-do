@@ -31,10 +31,8 @@ jobs:
         ssh-add ~/.ssh/id_rsa
         ssh-add -l
     - uses: actions/checkout@v2
-      env:
-        git_ssh_command: "ssh -i $key_path -o StrictHostKeyChecking=no"
       with:
-        ssh-key: "{{ secrets.PRIVATE_KEY }}"
+        ssh-key: ${{ secrets.PRIVATE_KEY }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
