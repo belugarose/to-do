@@ -31,6 +31,8 @@ jobs:
         ssh-add ~/.ssh/id_rsa
         ssh-add -l
     - uses: actions/checkout@v2
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       with:
         ssh-key: "~/.ssh/id_rsa"
     - name: Use Node.js ${{ matrix.node-version }}
