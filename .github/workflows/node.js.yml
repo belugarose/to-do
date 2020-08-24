@@ -26,6 +26,8 @@ jobs:
         mkdir -p ~/.ssh
         echo "$private_key" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        eval `ssh-agent`
+        ssh-add -l
     - uses: actions/checkout@v2
       with:
         ssh-key: ~/.ssh/id_rsa
