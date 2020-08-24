@@ -22,7 +22,7 @@ jobs:
     - name: setup ssh key
       env:
         private_key: ${{ secretes.PRIVATE_KEY }}
-    - run: |
+      run: |
         mkdir -p ~/.ssh
         echo "$private_key" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
