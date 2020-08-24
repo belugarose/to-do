@@ -30,8 +30,10 @@ jobs:
         ssh-add $GITHUB_WORKSPACE/ssh/id_rsa
         ssh-add -l
     - uses: actions/checkout@v2
+      env:
+        key_path: '$GITHUB_WORKSPACE/ssh/id_rsa'
       with:
-        ssh-key: ''
+        ssh-key: "$key_path"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
