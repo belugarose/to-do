@@ -22,7 +22,7 @@ jobs:
     - name: setup ssh key
       env:
         private_key: ${{ secrets.PRIVATE_KEY }}
-        key_path: ${{ github.workspace }}/../private.key:  
+        key_path: ${{ github.workspace }}/../private.key
       run: |
         mkdir -p ~/.ssh
         echo "$private_key" > ../private.key
